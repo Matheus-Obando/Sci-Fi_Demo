@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
 
 	private UIManager m_uiManager;
 
+	public bool hasCoins = false;
 	// Start is called before the first frame update
 	void Start()
 	{
