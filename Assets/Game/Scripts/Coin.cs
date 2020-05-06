@@ -30,21 +30,9 @@ public class Coin : MonoBehaviour
                     {
                         uiManager.CollectedCoin();
                     }
-
+                    uiManager.interactionText.text = string.Empty;
                     Destroy(this.gameObject);
                 }
-            }
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            UIManager uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
-            if (uiManager != null)
-            {
-                uiManager.interactionText.text = string.Empty;
             }
         }
     }

@@ -51,13 +51,4 @@ public class SharkShop : MonoBehaviour
 			m_UIManager.interactionText.text = string.Empty;
 		}
 	}
-	// check for a collision
-	// check if the player
-	// wait for E key
-	// check if the player has a coin
-		// remove the coin
-		// update the inventory display
-		// play win sound
-
-	// Debug get out of here
 }

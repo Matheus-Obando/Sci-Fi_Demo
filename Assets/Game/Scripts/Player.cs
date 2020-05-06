@@ -22,7 +22,9 @@ public class Player : MonoBehaviour
 
 	[SerializeField]
 	private int m_currentAmmo;
-	private int m_maxAmmo = 50;
+	[SerializeField]
+	private int m_maxAmmo = 100;
+
 	private bool m_isReloading = false;
 
 	private UIManager m_uiManager;
@@ -84,6 +86,13 @@ public class Player : MonoBehaviour
 				Debug.Log("Hit: " + hitInfo.transform.name);
 				GameObject hitMarker = (GameObject)Instantiate(m_hitMarker, hitInfo.point, Quaternion.identity);
 				Destroy(hitMarker, 1f);
+
+				Destructable destructableObject = hitInfo.transform.GetComponent<Destructable>();
+
+				if (destructableObject != null)
+				{
+					destructableObject.DestroyObject();
+				}
 			}
 		}
 
