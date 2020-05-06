@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 	private GameObject m_hitMarker;
 	[SerializeField]
 	private AudioSource m_shootAudio;
+	[SerializeField]
+	private GameObject m_weapon;
 
 	private float m_gravity = 9.81f;
 	private ParticleSystem m_MuzzleLight;
@@ -56,7 +58,7 @@ public class Player : MonoBehaviour
 
 	private void Fire()
 	{
-		if (Input.GetMouseButton(0) && m_currentAmmo > 0)
+		if (Input.GetMouseButton(0) && m_weapon.activeSelf && m_currentAmmo > 0)
 		{
 			Ray rayOrigin = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 			RaycastHit hitInfo;
@@ -104,6 +106,11 @@ public class Player : MonoBehaviour
 		m_currentAmmo = m_maxAmmo;
 		m_uiManager.UpdateAmmo(m_currentAmmo);
 		m_isReloading = false;
+	}
+
+	public void EnableWeapons()
+	{
+		m_weapon.SetActive(true);
 	}
 
 	// Update is called once per frame

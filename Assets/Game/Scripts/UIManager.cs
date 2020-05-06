@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
     private Text m_ammoText;
     [SerializeField]
     private GameObject m_coin;
+
+    public Text interactionText;
     public void UpdateAmmo(int count)
     {
         m_ammoText.text = string.Format("Ammo: {0}", count);
@@ -17,5 +19,10 @@ public class UIManager : MonoBehaviour
     public void CollectedCoin()
     {
         m_coin.SetActive(true);
+    }
+
+    public void RemoveCoin()
+    {
+        m_coin.SetActive(false);
     }
 }

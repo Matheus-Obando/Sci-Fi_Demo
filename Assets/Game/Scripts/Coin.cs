@@ -15,6 +15,8 @@ public class Coin : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            UIManager uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+            uiManager.interactionText.text = string.Format("(E) TO COLLECT COIN");
 
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -23,7 +25,6 @@ public class Coin : MonoBehaviour
                 {
                     player.hasCoins = true;
                     AudioSource.PlayClipAtPoint(m_coinPickup, transform.position, 1f);
-                    UIManager uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
 
                     if (uiManager != null)
                     {
@@ -32,6 +33,18 @@ public class Coin : MonoBehaviour
 
                     Destroy(this.gameObject);
                 }
+            }
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            UIManager uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+            if (uiManager != null)
+            {
+                uiManager.interactionText.text = string.Empty;
             }
         }
     }
